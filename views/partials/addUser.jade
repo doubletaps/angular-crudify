@@ -1,0 +1,8 @@
+div(ng-controller='AddUserCtrl')
+	h3 Add a new user
+	label(for='username') UserName:
+	input(ng-model='form.username', name='username')
+	label(for='password') Password:
+	input(ng-model='form.password', name='password')
+	p
+		button(ng-click='submitUser()') Add User

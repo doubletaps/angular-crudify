@@ -1,0 +1,8 @@
+div(ng-controller='EditUserCtrl')
+	h3 Edit User
+	label(for='username') UserName:
+	input(ng-model='form.username', name='username')
+	label(for='password') Password:
+	input(ng-model='form.password', name='password')
+	p
+		button(ng-click='editUser()') Edit User

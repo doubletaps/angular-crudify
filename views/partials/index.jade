@@ -1,0 +1,9 @@
+div(ng-controller='IndexCtrl')
+
+	h3 Users ( {{users.length}} )
+	div(ng-repeat='user in users')
+		h4 {{user.username}}, {{user.password}} - 
+	
+			a(href='/editUser/{{user._id}}') Edit | 
+			a(href='/deleteUser/{{user._id}}') Delete
+		
