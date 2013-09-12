@@ -3,31 +3,8 @@
 /* Controllers */
 
 function AppCtrl($scope, $http) {
-	console.log("AppCtrl");
-  	$http({method: 'GET', url: '/users'}).
-  		success(function(data, status, headers, config) {
-    		$scope.users = data.users;
-  		}).
-  		error(function(data, status, headers, config) {
-    		$scope.name = 'Error!'
-  		});
 
- //  $http.get('/users').
- //    success(function(data, status, headers, config) {
- //      $scope.users = data.users;
- //    }).
- //    error(function(data, status, headers, config) {
- //    $scope.name = 'Error!'
-	// });
 }
-
-// function MyCtrl1() {}
-// MyCtrl1.$inject = [];
-
-
-// function MyCtrl2() {
-// }
-// MyCtrl2.$inject = [];
 
 function IndexCtrl($scope, $http) {
 	// $scope.message = "IndexCtrl";
@@ -36,8 +13,6 @@ function IndexCtrl($scope, $http) {
 			$scope.users = data;
 		});
 }
-
-
 
 function AddUserCtrl($scope, $http, $location) {
 	$scope.message = "AddUserCtrl";
@@ -52,7 +27,6 @@ function AddUserCtrl($scope, $http, $location) {
 	};
 	$scope.message = "AddUserCtrl"
 }
-
 
 function EditUserCtrl($scope, $http, $location, $routeParams) {
   $scope.form = {};
@@ -76,9 +50,6 @@ function ShowUserCtrl($scope, $http, $routeParams) {
       $scope.user = data;
     });
 }
-
-
-
 
 function DeleteUserCtrl($scope, $http, $location, $routeParams) {
 	$scope.message = $routeParams.id;

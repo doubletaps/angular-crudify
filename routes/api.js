@@ -2,12 +2,6 @@
  * Serve JSON to our AngularJS client
  */
 
-exports.name = function (req, res) {
-  res.json({
-  	name: 'Bob'
-  });
-};
-
 exports.users = function (req, res) {  
   User.find({}, function (err, users) {
         res.json({
@@ -16,7 +10,6 @@ exports.users = function (req, res) {
   });
 };
 
-
 exports.addUser = function (req, res) {
 	var newUser = new User(req.body);
 	newUser.save();
@@ -24,16 +17,13 @@ exports.addUser = function (req, res) {
 	res.json(req.body);
 };
 
-
 exports.editUser = function (req, res) {
   User.findByIdAndUpdate(req.params.id, { 
-    // $set: { username: req.body.username, password: req.body.password }}, {upsert:true}, function (err, user) {
    	$set: { username: req.body.username, password: req.body.password }}, {upsert:true}, function (err, user) {
       return res.json(user);
     }
   );
 };
-
 
 exports.deleteUser = function (req, res) {
   User.remove({_id: req.params.id}, function (err) {
