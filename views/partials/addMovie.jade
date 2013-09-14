@@ -1,0 +1,16 @@
+div(ng-controller='AddMovieCtrl')
+	h3 Add a new movie
+	label(for='name') Movie Name:
+	input(ng-model='form.name', name='name')
+
+	label(for='date') Date:
+	input(ng-model='form.date', name='date')
+
+	label(for='location') Location:
+	input(ng-model='form.location', name='location')
+
+	label(for='imgUrl') Image URL:
+	input(ng-model='form.imgUrl', name='imgUrl')
+
+	p
+		button(ng-click='submitMovie()') Add Movie

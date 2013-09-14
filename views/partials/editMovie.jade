@@ -1,0 +1,16 @@
+div(ng-controller='EditMovieCtrl')
+	h3 Edit Movie
+	label(for='name') Movie Name:
+	input(ng-model='form.name', name='name')
+	label(for='date') Date:
+	input(ng-model='form.date', name='date')
+
+
+
+
+
+	label(for='imgUrl') Image URL:
+	input(ng-model='form.imgUrl', name='imgUrl')
+	p
+		button(ng-click='editMovie()') Edit Movie
+	{{ scope.locations }}

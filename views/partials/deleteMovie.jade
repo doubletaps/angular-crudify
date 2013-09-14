@@ -1,0 +1,9 @@
+div(ng-controller='DeleteMovieCtrl')
+	h3 Movie: {{movie.name}}, Date: {{movie.date}}, Location: {{movie.location}}, Image URL: {{movie.imgUrl}}
+
+	p
+		| Are you sure you want to delete this movie?
+		button(ng-click='deleteMovie()') Yes
+		|   
+		button(ng-click='home()') Don't Delete
+		

@@ -77,3 +77,42 @@ exports.deleteLocation = function (req, res) {
     }
   });
 };
+
+
+/* Moviess */
+
+exports.moviess = function (req, res) {  
+  Movie.find({}, function (err, movies) {
+        res.json({
+          movies: movies
+        });
+  });
+};
+
+exports.addMovie = function (req, res) {
+	var newMovie = new Movie(req.body);
+	newMovie.save();
+	console.log("movie added: ", + req.body);
+	res.json(req.body);
+};
+
+exports.editMovie = function (req, res) {
+  Movie.findByIdAndUpdate(req.params.id, { 
+   	$set: { name: req.body.name, date: req.body.date, location: req.body.location, imgUrl: req.body.imgUrl }}, {upsert:true}, function (err, movie) {
+      return res.json(movie);
+    }
+  );
+};
+
+exports.deleteMovie = function (req, res) {
+  Movie.remove({_id: req.params.id}, function (err) {
+    if (!err) {
+      console.log('no delete movie error');
+      res.json(true);
+    }
+    else {
+      console.log('delete movie error');
+      res.json(false);
+    }
+  });
+};

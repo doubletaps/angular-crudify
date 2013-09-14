@@ -1,0 +1,12 @@
+div(ng-controller='ListMoviesCtrl')
+
+	h3 Movies ({{movies.length}} )
+	div(ng-repeat='movie in movies')
+		h4 {{movie.name}} 
+			a(href='/editMovie/{{movie._id}}') Edit | 
+			a(href='/deleteMovie/{{movie._id}}') Delete
+		p Release Date: {{movie.date}}, Location: {{movie.location}}
+		p Image URL: {{movie.imgUrl}} - 
+	
+
+		
