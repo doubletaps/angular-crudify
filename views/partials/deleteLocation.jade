@@ -1,0 +1,9 @@
+div(ng-controller='DeleteLocationCtrl')
+	h3 Location: {{location.name}}, Latitude: {{location.latitude}}, Longitude: {{location.longitude}}
+
+	p
+		| Are you sure you want to delete this location?
+		button(ng-click='deleteLocation()') Yes
+		|   
+		button(ng-click='home()') Don't Delete
+		

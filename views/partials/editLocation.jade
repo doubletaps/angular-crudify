@@ -1,0 +1,10 @@
+div(ng-controller='EditLocationCtrl')
+	h3 Edit Location
+	label(for='name') Location Name:
+	input(ng-model='form.name', name='name')
+	label(for='latitude') Latitude:
+	input(ng-model='form.latitude', name='latitude')
+	label(for='longitude') Longitude:
+	input(ng-model='form.longitude', name='longitude')
+	p
+		button(ng-click='editLocation()') Edit Location

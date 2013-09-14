@@ -6,7 +6,8 @@ var routes = require('./routes');
 // Create the db connection
 var db = mongoose.createConnection('mongodb://localhost/apitest');
 
-// Create our schema
+// Create our schemas
+var Schema = require('mongoose').Schema;
 var UserSchema = new mongoose.Schema({
   username: {
       type: String,
@@ -17,8 +18,44 @@ var UserSchema = new mongoose.Schema({
   }
 });
 
+var LocationSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  latitude: {
+    type: Number,
+    required: true
+  },
+  longitude: {
+    type: Number,
+    required: true
+  }
+});
+
+var MovieSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: String,
+    required: true
+  },
+  location: {
+    type: Schema.ObjectId,
+    ref: 'Location',
+    required: true
+  },
+  imgUrl: {
+    type: String
+  }
+});
+
 // Add the model into db
-var User = db.model('User', UserSchema);
+var User =      db.model('User', UserSchema);
+var Location =  db.model('Location', LocationSchema);
+var Movie =     db.model('Movie', MovieSchema);
 
 // Create the HTTP server
 var app = express();
@@ -51,6 +88,8 @@ app.get('/partials/:name', routes.partials);
 // Expose our models from the database and add it to the HTTP server
 var api = crudify(db);
 api.expose('User');
+api.expose('Location');
+api.expose('Movie');
 api.hook(app);
 
 // Listen to port 8080

@@ -1,0 +1,9 @@
+div(ng-controller='ListLocationsCtrl')
+
+	h3 Locations ({{locations.length}} )
+	div(ng-repeat='location in locations')
+		h4 {{location.name}}, {{location.latitude}}, {{location.longitude}} - 
+	
+			a(href='/editLocation/{{location._id}}') Edit | 
+			a(href='/deleteLocation/{{location._id}}') Delete
+		

@@ -2,11 +2,23 @@
 
 /* Controllers */
 
-function AppCtrl($scope, $http) {
+function AppCtrl($scope, $http, $location) {
+
+
+	$scope.home = function () {
+    	$location.url('/');
+	};
+
 
 }
 
-function IndexCtrl($scope, $http) {
+function IndexCtrl($scope, $http, $location) {
+ 	$location.url('/');
+}
+
+/* User Controllers */
+
+function ListUsersCtrl($scope, $http) {
 	// $scope.message = "IndexCtrl";
 	$http.get('users').
 		success(function(data, status, headers, config) {
@@ -65,8 +77,67 @@ function DeleteUserCtrl($scope, $http, $location, $routeParams) {
 			});
 	};
 
-	$scope.home = function () {
-    	$location.url('/');
+}
+
+/* Location Controllers */
+
+
+function ListLocationsCtrl($scope, $http) {
+	// $scope.message = "IndexCtrl";
+	$http.get('locations').
+		success(function(data, status, headers, config) {
+			$scope.locations = data;
+		});
+}
+
+function AddLocationCtrl($scope, $http, $location) {
+
+	$scope.form = {};
+
+	$scope.submitLocation = function () {
+    	$http.post('locations', $scope.form).
+      		success(function(data) {
+        		$location.path('/listLocations');
+      		});
+	};
+	$scope.message = "AddLocationCtrl"
+}
+
+function EditLocationCtrl($scope, $http, $location, $routeParams) {
+  $scope.form = {};
+  $http.get('/locations/' + $routeParams.id).
+    success(function(data) {
+      $scope.form = data;
+    });
+
+  $scope.editLocation = function () {
+  	// $scope.message  = $scope.form.username + $scope.form.password;
+    $http.put('/locations/' + $routeParams.id, $scope.form).
+      success(function(data) {
+        $location.url('/showLocation/' + $routeParams.id);
+      });
+  };
+}
+
+function ShowLocationCtrl($scope, $http, $routeParams) {
+  $http.get('/locations/' + $routeParams.id).
+    success(function(data) {
+      $scope.location = data;
+    });
+}
+
+function DeleteLocationCtrl($scope, $http, $location, $routeParams) {
+	// $scope.message = $routeParams.id;
+	$http.get('locations/' + $routeParams.id).
+		success(function(data) {
+			$scope.location = data;
+		});
+
+	$scope.deleteLocation = function () {
+		$http.delete('locations/' + $routeParams.id).
+			success(function(data) {
+				$location.url('/listLocations');
+			});
 	};
 
 }

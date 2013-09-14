@@ -7,9 +7,18 @@ block body
         a.brand(href='#') AngularCrudify
         ul.nav.pull-right
           li
-            a(href='/') List Users
+            a(href='/listUsers') Users
           li
-            a(href='/addUser') New User                
+            a(href='/addUser') New User  
+          li
+            a(href='/listMovies') Movies
+          li
+            a(href='/addMovie') New Movie
+          li
+            a(href='/listLocations') Locations
+          li
+            a(href='/addLocation') New Location
+
   .container-fluid      
     div(ng-controller='AppCtrl')
       .hero-unit  
