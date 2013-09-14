@@ -6,7 +6,6 @@ angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives'])
   config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider.
     	when('/',				{templateUrl: 'partials/index',					controller: IndexCtrl}).
-    	// when('/index',			{templateUrl: 'index',					controller: AppCtrl}).
   		when('/listUsers',		{templateUrl: 'partials/listUsers',		controller: ListUsersCtrl}). 
     	when('/addUser', 		{templateUrl: '/partials/addUser',		controller: AddUserCtrl}).
     	when('/editUser/:id',	{templateUrl: '/partials/editUser',		controller: EditUserCtrl}).

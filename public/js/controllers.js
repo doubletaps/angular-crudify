@@ -40,10 +40,9 @@ function AddUserCtrl($scope, $http, $location) {
 	$scope.submitUser = function () {
     	$http.post('users', $scope.form).
       		success(function(data) {
-        		$location.path('/');
+        		$location.path('/listUsers');
       		});
 	};
-	$scope.message = "AddUserCtrl"
 }
 
 function EditUserCtrl($scope, $http, $location, $routeParams) {
