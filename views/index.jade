@@ -25,12 +25,19 @@ block body
     div(ng-controller='AppCtrl')
       .hero-unit  
         h1 My Angular Crudify App
+        p 
+          a(href="/session/new") Login
+        p  Not a member yet? - 
+          a(href="/users/new") Register Now!
 
       div(ng-view)
     hr  
     div
       | Angular seed app: v
       span(app-version)
+
+
+
 
   script(src='js/lib/angular/angular.js')
   script(src='js/app.js')
